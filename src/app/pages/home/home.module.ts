@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HomeEffects } from './state/home.effects';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { CurrentWeatherComponent } from './components/current-weather/current-weather.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CurrentWeatherComponent } from './components/current-weather/current-we
     StoreModule.forFeature('home',homeReducer),
     EffectsModule.forFeature([HomeEffects]),
     ComponentsModule,
+    RouterModule,
   ],
   declarations: [
     HomePage,

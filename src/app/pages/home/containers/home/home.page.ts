@@ -15,6 +15,7 @@ import * as fromHomeSelectors from '../../state/home.selectors';
 })
 export class HomePage implements OnInit, OnDestroy {
   searchControl: FormControl;
+  searchControlWithAutoComplete: FormControl;
   text: string;
   cityWeather: CityWeather;
   loading$: Observable<boolean>;
@@ -31,6 +32,10 @@ export class HomePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.searchControl = new FormControl('', Validators.required);
+    this.searchControlWithAutoComplete = new FormControl(undefined);
+    this.searchControlWithAutoComplete.valueChanges.subscribe(value => {if(!!value){ this.store.dispatch(fromHomeActions.loadCurrentWeatherById({id: value.geonameid.toString()}))}});
+
+    this.store.dispatch(fromHomeActions.clearHomeState());
 
     this.store
       .pipe(

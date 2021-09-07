@@ -10,7 +10,7 @@ import * as fromHomeActions from './home.actions';
 export class HomeEffects {
   loadCurrentWeather$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromHomeActions.loadCurrentWeather),
+      ofType(fromHomeActions.loadCurrentWeather,),
       mergeMap(({ query }) => this.weatherService.getCityWeatherByQuery(query)),
       catchError((err, caught$) => {
         this.store.dispatch(fromHomeActions.loadCurrentWeatherFailed());

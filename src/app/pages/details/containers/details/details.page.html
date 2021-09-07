@@ -1,0 +1,7 @@
+<div class="container-fluid">
+    <h2>{{cityDailyWeather.city.name}}</h2>
+    <jv-detailed-weather [weather]="cityDailyWeather.current"></jv-detailed-weather>
+    <div *ngFor="let daily of cityDailyWeather.daily">
+        <jv-daily-weather [daily]="daily"></jv-daily-weather>
+    </div>
+</div>

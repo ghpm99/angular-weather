@@ -25,7 +25,7 @@ const reducer = createReducer(
       error: false,
     })
   ),
-  on(fromHomeActions.loadCurrentWeatherSucess, (state, { entity }) => ({
+  on(fromHomeActions.loadCurrentWeatherSuccess, (state, { entity }) => ({
     ...state,
     entity,
     loading: false,

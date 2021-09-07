@@ -1,24 +1,26 @@
 <div class="container-fluid">
-    <div>{{date}}</div>
-    <div class="weather-details">
-        <div class="weather-icon">
-          <img [src]="weatherIcon" />
-          <span>{{ daily.weather.description }}</span>
-        </div>
-      
-        <div class="weather-temp">
-          <h3>{{daily.weather.minTemp }} - {{daily.weather.maxTemp}}</h3>
-          
-        </div>
-      
-        <div class="weather-misc">
-          <div>Humidade: {{ daily.weather.humidity }}</div>
-          <div>Velocidade do vento: {{ daily.weather.wind.speed }} m/s</div>
-        </div>
+  <div>{{ date | uppercase }}</div>
+  <div class="weather-details">
+    <div class="weather-icon">
+      <img [src]="weatherIcon" />
+      <span>{{ daily.weather.description }}</span>
+    </div>
 
-        <div class="weather-sun">
-            <div>Nascer do sol: {{hourSunset}} </div>
-            <div>Pôr do sol: {{hourSunrise}}</div>
-        </div>
-      </div>
+    <div class="weather-temp">
+      <h3>
+        {{ daily.weather.minTemp }} {{ unitSymbol }} -
+        {{ daily.weather.maxTemp }} {{ unitSymbol }}
+      </h3>
+    </div>
+
+    <div class="weather-misc">
+      <div>Humidade: {{ daily.weather.humidity }}</div>
+      <div>Velocidade do vento: {{ daily.weather.wind.speed }} m/s</div>
+    </div>
+
+    <div class="weather-sun">
+      <div>Nascer do sol: {{ unixToHourMinute(daily.weather.sunrise) }}</div>
+      <div>Pôr do sol: {{ unixToHourMinute(daily.weather.sunset) }}</div>
+    </div>
+  </div>
 </div>

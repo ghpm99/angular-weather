@@ -16,15 +16,20 @@
 
     <div class="form-group">
       <label>Pesquisar com <i>autocomplete</i></label>
-      <jv-cities-typeahead [formControl]="searchControlWithAutoComplete"></jv-cities-typeahead>
+      <jv-cities-typeahead
+        [formControl]="searchControlWithAutoComplete"
+      ></jv-cities-typeahead>
     </div>
   </div>
 
   <jv-loader *ngIf="loading$ | async"> </jv-loader>
-  <div
-    *ngIf="!(loading$ | async) && !(error$ |async) && !!(cityWeather)"
-  >
-    <jv-current-weather [cityWeather]="cityWeather" (toggleBookmark)="onToggleBookmark()">
+  <div *ngIf="!(loading$ | async) && !(error$ |async) && !!(cityWeather)">
+    <jv-current-weather
+      [cityWeather]="cityWeather"
+      [isFavorite]="isCurrentFavorite$ | async"
+      (toggleBookmark)="onToggleBookmark()"
+      [unit]="unit$ | async"
+    >
     </jv-current-weather>
   </div>
   <div *ngIf="!(loading$ | async) && error$ | async">

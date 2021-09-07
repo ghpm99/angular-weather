@@ -12,16 +12,21 @@ export const bookmarkInitialState: BookmarksState = {
   list: [],
 };
 
-const reducer = createReducer(bookmarkInitialState,
-    on(fromHomeActions.toggleBookmark, (state,{entity}) => ({
-        ...state,
-        list: toggleBookmark(state.list,entity),
+const reducer = createReducer(
+    bookmarkInitialState,
+    on(fromHomeActions.toggleBookmark, (state, { entity }) => ({
+      ...state,
+      list: toggleBookmark(state.list, entity),
     })),
-    on(fromBookmarkActions.removeBookmark, (state,{id}) => ({
-        ...state,
-        list: state.list.filter(b => b.id !== id),
-    }))
-    );
+    on(fromBookmarkActions.removeBookmark, (state, { id }) => ({
+      ...state,
+      list: state.list.filter(b => b.id !== id),
+    })),
+    on(fromBookmarkActions.updateBookmarkList, (state, { list }) => ({
+      ...state,
+      list,
+    })),
+  );
 
 
 export function bookmarkReducer(state: BookmarksState | undefined, action: Action){

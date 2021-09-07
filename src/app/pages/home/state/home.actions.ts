@@ -6,8 +6,8 @@ export const loadCurrentWeather = createAction(
     props<{query: string}>(),
 );
 
-export const loadCurrentWeatherSucess = createAction(
-    '[Weather API] Load Current Weather Sucess',
+export const loadCurrentWeatherSuccess = createAction(
+    '[Weather API] Load Current Weather Success',
     props<{entity: any}>(),
 );
 
